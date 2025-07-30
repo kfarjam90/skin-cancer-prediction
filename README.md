@@ -1,4 +1,4 @@
-# Skin Lesion Classification System
+# skin cancer prediction
 
 ## Overview
 A deep learning-based web application for classifying dermatoscopic images of skin lesions into seven diagnostic categories:

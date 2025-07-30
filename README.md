@@ -1,6 +1,7 @@
 # Skin Lesion Classification System
 
-![Project Cover Image](static/images/cover_image.jpg)
+Click on Photo for wathing Demo:
+[![Watch the demo video](image.png)](https://www.youtube.com/watch?v=tnCIMnDahJU)
 
 ## Overview
 A deep learning-based web application for classifying dermatoscopic images of skin lesions into seven diagnostic categories:

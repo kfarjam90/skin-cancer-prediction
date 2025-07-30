@@ -1,8 +1,5 @@
 # Skin Lesion Classification System
 
-Click on Photo for wathing Demo:
-[![Watch the demo video](image.png)](https://www.youtube.com/watch?v=tnCIMnDahJU)
-
 ## Overview
 A deep learning-based web application for classifying dermatoscopic images of skin lesions into seven diagnostic categories:
 - Actinic keratoses and intraepithelial carcinoma / Bowen's disease (akiec)
@@ -14,6 +11,10 @@ A deep learning-based web application for classifying dermatoscopic images of sk
 - Vascular lesions (vasc)
 
 **Disclaimer:** This tool is not a substitute for professional medical advice. Always consult a dermatologist for proper diagnosis.
+
+Click on Photo for wathing Demo:
+[![Watch the demo video](image.png)](https://www.youtube.com/watch?v=tnCIMnDahJU)
+
 
 ## Features
 - 🖼️ Image upload interface for skin lesion analysis

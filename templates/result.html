@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Lesion Classification Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='images/cover_image.jpg') }}" alt="Skin Lesion Classification" class="header-image">
+            <h1>Classification Result</h1>
+        </header>
+        
+        <div class="result-section">
+            <h2>Prediction: {{ prediction }} ({{ confidence }}% confidence)</h2>
+            
+            <div class="result-details">
+                <div class="probability-chart">
+                    <h3>Probability Distribution:</h3>
+                    {% for i in range(class_names|length) %}
+                    <div class="probability-row">
+                        <span class="class-name">{{ class_names[i] }}</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: {{ probabilities[i] }}%"></div>
+                        </div>
+                        <span class="percentage">{{ probabilities[i] }}%</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="interpretation">
+                <h3>What does this mean?</h3>
+                {% if prediction == 'akiec' %}
+                    <p><strong>Actinic keratosis / Bowen's disease (akiec):</strong> This suggests a precancerous or early cancerous lesion. Actinic keratoses are rough, scaly patches caused by sun damage. Bowen's disease is an early form of squamous cell carcinoma. These lesions should be evaluated by a dermatologist as they may require treatment to prevent progression to invasive cancer.</p>
+                {% elif prediction == 'bcc' %}
+                    <p><strong>Basal cell carcinoma (bcc):</strong> This is the most common type of skin cancer. BCCs typically appear as pearly bumps or pinkish patches that may bleed or not heal properly. While rarely metastatic, they can cause significant local tissue damage if untreated. Consultation with a dermatologist is recommended.</p>
+                {% elif prediction == 'bkl' %}
+                    <p><strong>Benign keratosis (bkl):</strong> This includes seborrheic keratoses ("age spots") and solar lentigines ("sun spots"). These are non-cancerous growths that may appear waxy, scaly, or like "stuck-on" lesions. While generally harmless, any changing lesion should be evaluated by a professional.</p>
+                {% elif prediction == 'df' %}
+                    <p><strong>Dermatofibroma (df):</strong> A benign skin growth that typically appears as a firm, small bump, often brownish or reddish in color. Dermatofibromas are harmless but may be removed if they cause discomfort or for cosmetic reasons.</p>
+                {% elif prediction == 'mel' %}
+                    <p><strong>Melanoma (mel):</strong> This is the most serious type of skin cancer. Melanomas often show asymmetry, irregular borders, color variation, and may change in size. If this prediction has high confidence, urgent dermatological evaluation is strongly recommended as early detection is crucial for successful treatment.</p>
+                {% elif prediction == 'nv' %}
+                    <p><strong>Melanocytic nevus (nv):</strong> Common moles that are typically benign. Most adults have 10-40 of these. However, any mole that changes in size, shape, color, or becomes symptomatic should be examined by a dermatologist.</p>
+                {% elif prediction == 'vasc' %}
+                    <p><strong>Vascular lesion (vasc):</strong> This includes angiomas, angiokeratomas, and pyogenic granulomas - benign growths of blood vessels. While usually harmless, some may bleed easily or be confused with more serious conditions, so professional evaluation is advised.</p>
+                {% endif %}
+            </div>
+            
+            <div class="image-section">
+                <h3>Uploaded Image:</h3>
+                <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Skin Lesion">
+            </div>
+            
+            <div class="recommendations">
+                <h3>Recommended Next Steps:</h3>
+                <ul>
+                    <li>Consult a board-certified dermatologist for any suspicious lesion</li>
+                    <li>Monitor the lesion for changes in size, shape, color, or symptoms</li>
+                    <li>Take follow-up photos monthly for comparison if not immediately seeing a doctor</li>
+                    <li>Practice sun protection to prevent further skin damage</li>
+                    <li>Consider annual skin checks if you have risk factors for skin cancer</li>
+                </ul>
+            </div>
+            
+            <div class="note">
+                <p><strong>Important Disclaimer:</strong> This AI-assisted tool is for informational purposes only and does not constitute medical advice. The prediction is not a diagnosis. Always consult a qualified healthcare professional for medical concerns. The accuracy of predictions may vary and false positives/negatives are possible.</p>
+            </div>
+            
+            <a href="/" class="back-btn">Analyze Another Image</a>
+        </div>
+    </div>
+</body>
+</html>

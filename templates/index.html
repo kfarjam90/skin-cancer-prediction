@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Lesion Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='images/cover_image.jpg') }}" alt="Skin Lesion Classification" class="header-image">
+            <h1>Advanced Skin Lesion Classification</h1>
+            <p>Upload an image of a skin lesion to detect potential malignancies</p>
+        </header>
+        
+        <div class="upload-section">
+            <form method="POST" action="/predict" enctype="multipart/form-data">
+                <div class="file-input">
+                    <input type="file" name="file" id="file" accept="image/*" required>
+                    <label for="file">Choose a skin lesion image...</label>
+                </div>
+                <button type="submit" class="predict-btn">Analyze Image</button>
+            </form>
+        </div>
+        
+        <div class="info-section">
+            <h2>About the Project</h2>
+            <p>This web application uses a deep learning model trained on dermatoscopic images to identify various skin conditions, with particular focus on malignant lesions:</p>
+            <ul>
+                <li><strong>Actinic keratoses and intraepithelial carcinoma / Bowen's disease (akiec)</strong></li>
+                <li><strong>Basal cell carcinoma (bcc)</strong></li>
+                <li><strong>Benign keratosis-like lesions (bkl):</strong> solar lentigines, seborrheic keratoses, lichen-planus like keratoses</li>
+                <li><strong>Dermatofibroma (df)</strong></li>
+                <li><strong>Melanoma (mel)</strong></li>
+                <li><strong>Melanocytic nevi (nv)</strong></li>
+                <li><strong>Vascular lesions (vasc):</strong> angiomas, angiokeratomas, pyogenic granulomas and hemorrhage</li>
+            </ul>
+            <p>The model was trained on high-quality dermatoscopic images to assist in early detection of skin malignancies, helping users identify potential concerns that warrant professional medical evaluation.</p>
+            
+            <h3>Important Disclaimer</h3>
+            <p>This tool is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions you may have regarding a medical condition.</p>
+            
+            <h3>How to get the best results:</h3>
+            <ol>
+                <li>Use clear, well-lit photos of the skin lesion</li>
+                <li>Take the photo at close range but keep the entire lesion in frame</li>
+                <li>Use a neutral background when possible</li>
+                <li>Ensure the lesion is in focus with minimal shadows</li>
+                <li>Include a ruler or scale for size reference if possible</li>
+            </ol>
+            
+            <h3>When to see a doctor:</h3>
+            <p>Consult a dermatologist if you notice any lesion that:</p>
+            <ul>
+                <li>Is changing in size, shape, or color</li>
+                <li>Is asymmetrical or has irregular borders</li>
+                <li>Has multiple colors</li>
+                <li>Is larger than 6mm (pencil eraser size)</li>
+                <li>Itches, bleeds, or won't heal</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

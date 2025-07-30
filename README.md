@@ -1,4 +1,4 @@
-# skin cancer prediction
+# Skin Cancer Prediction
 
 ## Overview
 A deep learning-based web application for classifying dermatoscopic images of skin lesions into seven diagnostic categories:
